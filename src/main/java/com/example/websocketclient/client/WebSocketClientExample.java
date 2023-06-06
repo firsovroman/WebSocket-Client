@@ -20,12 +20,9 @@ public class WebSocketClientExample {
     Logger logger = LoggerFactory.getLogger(WebSocketClientExample.class);
 
     private void setConnected(boolean connected) {
-        // Your implementation of setConnected method
+        // do nothing
     }
 
-    private void showGreeting(String message) {
-        // Your implementation of showGreeting method
-    }
 
     public void connect() {
         List<Transport> transports = new ArrayList<>(1);
@@ -35,10 +32,10 @@ public class WebSocketClientExample {
         WebSocketStompClient stompClient = new WebSocketStompClient(sockJsClient);
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
-        String url = "ws://localhost:8080/gs-guide-websocket";
+        String urlForHandShake = "ws://localhost:8080/gs-guide-websocket";
         StompSessionHandler sessionHandler = new MyStompSessionHandler();
 
-        stompClient.connect(url, sessionHandler);
+        stompClient.connect(urlForHandShake, sessionHandler);
     }
 
     public void disconnect() {
